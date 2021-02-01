@@ -14,7 +14,7 @@ import {
   titlesByAuthorName,
   mostProlificAuthor,
   relatedBooks,
-  friendliestAuthor
+  friendliestAuthor,
 } from "./functions";
 
 // Data
@@ -63,7 +63,7 @@ describe("bookCountsByAuthor(authors)", () => {
   });
 
   test("returns the correct format", () => {
-    const result = bookCountsByAuthor(authors).every(author => {
+    const result = bookCountsByAuthor(authors).every((author) => {
       const keys = Object.keys(author);
       return keys.includes("author") && keys.includes("bookCount");
     });
@@ -73,7 +73,7 @@ describe("bookCountsByAuthor(authors)", () => {
   test("returns the correct data", () => {
     const expected = [
       { author: "Margaret Atwood", bookCount: 4 },
-      { author: "Lauren Beukes", bookCount: 2 }
+      { author: "Lauren Beukes", bookCount: 2 },
     ];
     const result = bookCountsByAuthor(authors.slice(0, 2));
     expect(result).toEqual(expected);
@@ -84,14 +84,14 @@ describe("booksByColor(books)", () => {
   test("returns the correct number of colors", () => {
     const expected = 2;
     const onlyGreenAndBlueBooks = books.filter(
-      book => book.color === "green" || book.color === "blue"
+      (book) => book.color === "green" || book.color === "blue"
     );
     const result = Object.keys(booksByColor(onlyGreenAndBlueBooks)).length;
     expect(result).toBe(expected);
   });
 
   test("returns the correct format", () => {
-    const result = Object.values(booksByColor(books)).every(bookList =>
+    const result = Object.values(booksByColor(books)).every((bookList) =>
       Array.isArray(bookList)
     );
     expect(result).toBe(true);
@@ -101,10 +101,10 @@ describe("booksByColor(books)", () => {
     const expected = {
       white: [
         "12 Rules for Life: An Antidote to Chaos",
-        "A Dance With Dragons"
+        "A Dance With Dragons",
       ],
       yellow: ["A Clash of Kings"],
-      red: ["A Feast for Crows"]
+      red: ["A Feast for Crows"],
     };
     const result = booksByColor(books.slice(0, 4));
     expect(result).toEqual(expected);
@@ -154,7 +154,6 @@ describe("relatedBooks(bookId, authors, books)", () => {
   test("can handle co-authored books - returns the titles of books by BOTH authors", () => {
     const expected = [
       "Good Omens",
-      "Good Omens",
       "Neverwhere",
       "Coraline",
       "The Color of Magic",
@@ -162,7 +161,7 @@ describe("relatedBooks(bookId, authors, books)", () => {
       "Wee Free Men",
       "The Long Earth",
       "The Long War",
-      "The Long Mars"
+      "The Long Mars",
     ].sort();
     const result = relatedBooks(46, authors, books).sort();
     expect(result).toEqual(expected);
@@ -172,7 +171,7 @@ describe("relatedBooks(bookId, authors, books)", () => {
    * Remove the x to unskip and run the bonus test.
    * Add an x to the previous test to skip it
    */
-  xtest("BONUS - removes duplicate books", () => {
+  test("BONUS - removes duplicate books", () => {
     const expected = [
       "Good Omens",
       "Neverwhere",
@@ -182,7 +181,7 @@ describe("relatedBooks(bookId, authors, books)", () => {
       "Wee Free Men",
       "The Long Earth",
       "The Long War",
-      "The Long Mars"
+      "The Long Mars",
     ].sort();
     const result = relatedBooks(46, authors, books).sort();
     expect(result).toEqual(expected);

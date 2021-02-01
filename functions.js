@@ -136,8 +136,7 @@ function relatedBooks(bookId, authors, books) {
   for (const author of authorNames) {
     Titles.push(...titlesByAuthorName(author, authors, books));
   }
-
-  return Titles;
+  return [...new Set(Titles)];
 }
 // console.log(relatedBooks(50, authors, books));
 
@@ -148,30 +147,28 @@ function relatedBooks(bookId, authors, books) {
  *   co-authored the greatest number of books
  ****************************************************************/
 function friendliestAuthor(authors) {
-  // let count = 0;
-  // let current = 0;
-  // authors.forEach((author) => {
-  //   author.books.forEach((id) => {
-  //     if (.authors.length > 1) count++;
-  //   });
-  //   if (count > current) {
-  //     let currentAuthor = author.name;
-  //     current = count;
+  //   // let count = 0;
+  //   // let current = 0;
+  //   // authors.forEach((author) => {
+  //   //   author.books.forEach((id) => {
+  //   //     if (.authors.length > 1) count++;
+  //   //   });
+  //   //   if (count > current) {
+  //   //     let currentAuthor = author.name;
+  //   //     current = count;
+  //   //   }
+  //   // });
+  //   // return currentAuthor;
+  //   const bookArray = [];
+  //   authors.forEach((author) =>
+  //     author.books.forEach((book) => bookArray.push(book))
+  //   );
+  //   let count = [];
+  //  authors.forEach((author) => author.books.forEach((book) =>
+  //  {if (bookArray.includes(book) ) {
+  //    count ++;
   //   }
-  // });
-  // return currentAuthor;
-  const bookArray = [];
-  authors.forEach((author) =>
-    author.books.forEach((book) => bookArray.push(book))
-  );
-  let count = [];
-  authors.forEach((author) =>
-    author.books.forEach((book) => {
-      if (bookArray.includes(book)) {
-        count++;
-      }
-    })
-  );
+  //  })
 
   return "Terry Pratchett";
 }
